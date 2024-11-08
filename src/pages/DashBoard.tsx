@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import '../App.css'
-import {EmployersScroll, CartsScroll} from '../components/EmployersScroll'
+import {EmployeesScroll, CartsScroll} from '../components/EmployeesScroll.tsx'
 import InfoContainer from '../components/InfoContainer'
 
 function DashBoard() {
@@ -17,7 +17,7 @@ function DashBoard() {
                 <InfoContainer  />
             </div>
             <div className='w-[30vw] h-[61vh] row-span-2 col-span-1'>
-                <EmployersScroll type="Employers"/>
+                <EmployeesScroll type="Employers"/>
             </div>
             <div className='w-[30vw] h-[30vh] col-span-1'>
             <CartsScroll type="Carts"/>
