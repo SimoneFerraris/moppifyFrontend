@@ -17,7 +17,7 @@ function DashBoard() {
                 <InfoContainer  />
             </div>
             <div className='w-[30vw] h-[61vh] row-span-2 col-span-1'>
-                <EmployeesScroll type="Employers"/>
+                <EmployeesScroll type="Employees"/>
             </div>
             <div className='w-[30vw] h-[30vh] col-span-1'>
             <CartsScroll type="Carts"/>
