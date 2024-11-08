@@ -14,11 +14,10 @@ const Employer = (props: { empId: string; name: string; surname: string; lostMop
     )
 }
 
-
 const CartsScroll = (props: {type:string;}) => {
     const {type} = props;
     return (
-        <div className='bg-white w-full h-full rounded-bl-2xl rounded-r-md rounded-bt-md p-8 border border-blue-900'>
+        <div className='bg-white w-full h-full rounded-bl-2xl rounded-t-md rounded-bt-md p-8 border border-blue-900'>
             <div className='text-xl font-medium'>{props.type}</div>
             <div className='overflow-y-auto overscroll-y-contain space-y-5 h-full'>        
                 <Employer empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>

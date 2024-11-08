@@ -6,13 +6,13 @@ import InfoContainer from '../components/InfoContainer'
 function DashBoard() {
   const [count, setCount] = useState(0)
   return (
-    <div className='space-y-10'>
+    <div className='space-y-10 max-w-screen-lg mx-auto w-[100vw]'>
 
         <div className='font-extrabold'>
             <h1>Mopify</h1>
         </div>
 
-        <div className='grid grid-cols-2 gap-x-[2vw] gap-y-[1vh] max-w-screen-lg mx-auto'>
+        <div className='grid grid-cols-2 gap-x-[2vw] gap-y-[1vh] '>
             <div className='w-[30vw] h-[30vh] col-span-1'>
                 <InfoContainer  />
             </div>
