@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import '../App.css'
-import EmployersScroll from '../components/EmployersScroll'
+import {EmployersScroll, CartsScroll} from '../components/EmployersScroll'
+import InfoContainer from '../components/InfoContainer'
 
 function DashBoard() {
   const [count, setCount] = useState(0)
@@ -10,16 +11,16 @@ function DashBoard() {
         <div className='font-extrabold'>
             <h1>Mopify</h1>
         </div>
-        
-        <div className='grid grid-cols-2 gap-x-20 gap-y-4 max-w-screen-lg mx-auto'>
+
+        <div className='grid grid-cols-2 gap-x-[2vw] gap-y-[1vh] max-w-screen-lg mx-auto'>
             <div className='w-[30vw] h-[30vh] col-span-1'>
-                <EmployersScroll/>
+                <InfoContainer  />
             </div>
-            <div className='w-[30vw] h-[62vh] row-span-2 col-span-1'>
-                <EmployersScroll/>
+            <div className='w-[30vw] h-[61vh] row-span-2 col-span-1'>
+                <EmployersScroll type="Employers"/>
             </div>
             <div className='w-[30vw] h-[30vh] col-span-1'>
-            <EmployersScroll/>
+            <CartsScroll type="Carts"/>
             </div>
         </div>
     </div>
