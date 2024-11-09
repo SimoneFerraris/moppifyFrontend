@@ -1,4 +1,4 @@
-const apiUrl: string = "http://localhost:5000";
+const apiUrl: string = "http://192.168.117.152:5000";
 
 export async function getEmployees(): Promise<any> {
     try {

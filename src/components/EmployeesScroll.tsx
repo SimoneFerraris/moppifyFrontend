@@ -4,7 +4,7 @@ import enlarge from '../assets/enlarge.svg'
 import cross2 from '../assets/cross-small-svgrepo-com.svg'
 import { getCarts, getEmployees } from '../utils/api'
 import { useNavigate } from 'react-router-dom';
-
+    
 const Employee = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
     const {empId, name, surname, lostMopsNmb} = props;
     const navigate = useNavigate();
