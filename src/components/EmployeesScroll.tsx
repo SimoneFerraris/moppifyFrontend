@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import resize from '../assets/resize.svg'
+import enlarge from '../assets/enlarge.svg'
 import cross2 from '../assets/cross-small-svgrepo-com.svg'
 import { getCarts, getEmployees } from '../utils/api'
 import { useNavigate } from 'react-router-dom';
@@ -40,8 +41,17 @@ const Cart = (props: { uuid: string; building: string; floor: string; room: numb
     )
 }
 
+type CartType = {
+    uuid: string;
+    room: string;
+    building: string;
+    floor?: string;
+    clean_cloths: number;
+    dirty_clothes: number;
+};
+
 const CartsScroll = (props: {type:string; fullscreen:boolean}) => {
-    const [carts, setCarts] = useState([]);
+    const [carts, setCarts] = useState<CartType[]>([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -54,24 +64,33 @@ const CartsScroll = (props: {type:string; fullscreen:boolean}) => {
     const {type, fullscreen} = props;
     return (
         <div className={`bg-white w-full h-full ${!fullscreen?'rounded-2xl':'rounded-bl-2xl rounded-t-md rounded-br-md'} p-6 relative border border-cyan-900 hover:bg-[#F7F7F8]`}>
-            <div className={`${fullscreen?'transition-all duration-75 absolute top-[2vh] left-[2vw]':'scale-0 top-[2vh] w-0 h-0 left-0'}`}>
-                <img className='' src={resize}/>
+            <div className={`${fullscreen?'transition-all duration-75 absolute top-[1vh] right-[1vw] scale-50':'scale-0 top-[2vh] w-0 h-0 right-0'}`}>
+                <img className='' src={enlarge}/>
             </div>
             <div className={`${!fullscreen?'transition-all duration-75 absolute top-[1vh] left-[2vw]':'hidden'}`}>
                 <img className='' src={cross2}/>
             </div>
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
-            <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[80%]'>        
-                <Cart uuid='ewuwii-udwfewk-279573' room={2} building='Ospedale Bressanone' floor='2a'/>
-                
+            <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[80%]'>
+            {carts.map((cart) => (
+                <Cart uuid={cart.uuid} room={cart.room} building={cart.building} floor='2a'/>
+            ))}
             </div>
         </div>
     )
 }
 
+type EmployeeType = {
+    name: string;
+    surname: string;
+    position: string;
+    rfid: string;
+    lostMopsNmb: number;
+};
+
 const EmployeesScroll = (props: {type:string;}) => {
     const {type} = props;
-    const [employees, setEmployees] = useState([]);
+    const [employees, setEmployees] = useState<EmployeeType[]>([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -84,11 +103,16 @@ const EmployeesScroll = (props: {type:string;}) => {
     return (
         <div className='bg-white w-full h-full rounded-l-md rounded-r-2xl p-6 '>
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
-            <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[90%]'>
-                        
-                <Employee empId='2342' lostMopsNmb={2} name='Luca' surname='Lama'/>
-                <Employee empId='7436' lostMopsNmb={2} name='Mario' surname='Sgnizzicolo'/>
-                <Employee empId='9883' lostMopsNmb={2} name='Marianna' surname='Ruccola'/>
+            <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[90%]'>        
+                {employees.map((employee) => (
+                        <Employee
+                            key={employee.rfid}
+                            empId={employee.rfid}
+                            lostMopsNmb={0}  // Example lost mops number
+                            name={employee.name}
+                            surname={employee.surname}
+                        />
+                ))}
             </div>
         </div>
     )

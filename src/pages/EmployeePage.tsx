@@ -3,7 +3,7 @@ import '../App.css'
 function EmployeePage() {
   return (
     <div className='space-y-2'>
-      <div className='bg-[#c7c7c7] rounded-t-2xl rounded-b-md w-[60vw] h-[10vh] font-medium text-xl text-[#777171] tracking-wider pt-10 '>NAME SURNAME</div>
+      <div className='bg-[#c7c7c7] rounded-t-2xl rounded-b-md w-[60vw] h-[10vh] font-medium text-xl text-[#777171] tracking-wider pt-[4vh] '>NAME SURNAME</div>
       <div className='bg-white rounded-b-2xl rounded-t-md text-gray-800 w-[60vw] h-[71vh]'>
 s
       </div>
