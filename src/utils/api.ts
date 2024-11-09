@@ -27,6 +27,7 @@ export async function getLostMops(): Promise<any> {
     try {
         const response = await fetch(apiUrl + '/lost_mops');
         const data = await response.json();
+        console.log(data)
         return data.lost_mops;
     } catch (error) {
         console.error("Failed to fetch lost mops:", error);

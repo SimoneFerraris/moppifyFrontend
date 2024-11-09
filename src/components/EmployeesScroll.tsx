@@ -5,8 +5,8 @@ import cross2 from '../assets/cross-small-svgrepo-com.svg'
 import { getCarts, getEmployees } from '../utils/api'
 import { useNavigate } from 'react-router-dom';
     
-const Employee = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
-    const {empId, name, surname, lostMopsNmb} = props;
+const Employee = (props: { empId: string; name: string; surname: string}) => {
+    const {empId, name, surname} = props;
     const navigate = useNavigate();
 
     const handleClick = () => {
@@ -18,9 +18,6 @@ const Employee = (props: { empId: string; name: string; surname: string; lostMop
             <div className='absolute text-sm text-gray-400 right-3'>ID: {props.empId}</div>
             <div className='font-semibold col-span-1'>
                 {props.surname} {props.name}
-            </div>
-            <div className='col-span-1'>
-                Mops lost number: {props.lostMopsNmb}
             </div>
         </button>
     )
@@ -85,7 +82,7 @@ type EmployeeType = {
     surname: string;
     position: string;
     rfid: string;
-    lostMopsNmb: number;
+   
 };
 
 const EmployeesScroll = (props: {type:string;}) => {
@@ -108,7 +105,7 @@ const EmployeesScroll = (props: {type:string;}) => {
                         <Employee
                             key={employee.rfid}
                             empId={employee.rfid}
-                            lostMopsNmb={0}  // Example lost mops number
+                           
                             name={employee.name}
                             surname={employee.surname}
                         />
