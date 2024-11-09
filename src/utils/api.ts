@@ -27,3 +27,17 @@ export async function getCarts(): Promise<any> {
         return []
     }
 }
+
+export async function getLostMops(): Promise<any> {
+    try {
+        const response = await fetch(apiUrl + '/lost_mops');
+        if (!response.ok) {
+            return []
+        }
+        const data = await response.json();
+        return data.lost_mops;
+    } catch (error) {
+        console.error("Failed to fetch lost mops:", error);
+        return [];
+    }
+}
