@@ -2,12 +2,18 @@ import { useEffect, useState } from 'react'
 import resize from '../assets/resize.svg'
 import cross2 from '../assets/cross-small-svgrepo-com.svg'
 import { getCarts, getEmployees } from '../utils/api'
-
+import { useNavigate } from 'react-router-dom';
 
 const Employee = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
     const {empId, name, surname, lostMopsNmb} = props;
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/employee/${empId}`);
+      };
+
     return (
-        <div className='rounded-md h-[10vh] w-[100%] text-gray-800 border border-cyan-900 p-2 grid-cols-2 relative'>
+        <button className='bg-white rounded-md w-[100%] text-gray-800 border border-cyan-900 hover:border-cyan-900 p-2 grid-cols-2 relative hover:hover:bg-[#F7F7F8]' onClick={handleClick}>
             <div className='absolute text-sm text-gray-400 right-3'>ID: {props.empId}</div>
             <div className='font-semibold col-span-1'>
                 {props.surname} {props.name}
@@ -15,7 +21,7 @@ const Employee = (props: { empId: string; name: string; surname: string; lostMop
             <div className='col-span-1'>
                 Mops lost number: {props.lostMopsNmb}
             </div>
-        </div>
+        </button>
     )
 }
 

@@ -2,14 +2,15 @@ import { useState } from 'react'
 import '../App.css'
 import {EmployeesScroll, CartsScroll} from '../components/EmployeesScroll.tsx'
 import InfoContainer from '../components/InfoContainer'
-import mopifyLogo from '../assets/mopifyLogo.svg'
+import mopifyLogo from '../assets/mopifyLogo 1.svg'
 
 function DashBoard() {
   const [fullscreen, setFullscreen] = useState<boolean>(true)
   return (
     <div className='space-y-10'>
-        <div className='font-extrabold'>
-            <h1>Mopify</h1>
+
+        <div className='pb-5 flex justify-center'>
+            <img src={mopifyLogo}/>
         </div>
 
         <div className='grid grid-cols-2 gap-x-[2vw] gap-y-[1vh] max-w-screen-lg mx-auto'>
