@@ -1,6 +1,8 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import resize from '../assets/resize.svg'
-import down from '../assets/down.svg'
+import cross2 from '../assets/cross-small-svgrepo-com.svg'
+import { getCarts, getEmployees } from '../utils/api'
+
 
 const Employee = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
     const {empId, name, surname, lostMopsNmb} = props;
@@ -31,11 +33,24 @@ const Cart = (props: { empId: string; name: string; surname: string; lostMopsNmb
 }
 
 const CartsScroll = (props: {type:string; fullscreen:boolean}) => {
+    const [carts, setCarts] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const cartsData = await getCarts();
+            setCarts(cartsData);
+        }
+        fetchData();
+    }, []);
+    
     const {type, fullscreen} = props;
     return (
-        <div className='bg-white w-full h-full rounded-bl-2xl rounded-t-md rounded-br-md p-6 relative border border-cyan-900 hover:bg-[#F0F0F0]'>
-            <div className='absolute top-[2vh] left-[2vw]'>
-            {props.fullscreen?<img className='' src={resize}/>:'v'}
+        <div className={`bg-white w-full h-full ${!fullscreen?'rounded-2xl':'rounded-bl-2xl rounded-t-md rounded-br-md'} p-6 relative border border-cyan-900 hover:bg-[#F7F7F8]`}>
+            <div className={`${fullscreen?'transition-all duration-75 absolute top-[2vh] left-[2vw]':'scale-0 top-[2vh] w-0 h-0 left-0'}`}>
+                <img className='' src={resize}/>
+            </div>
+            <div className={`${!fullscreen?'transition-all duration-75 absolute top-[1vh] left-[2vw]':'hidden'}`}>
+                <img className='' src={cross2}/>
             </div>
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
             <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[80%]'>        
@@ -58,6 +73,16 @@ const CartsScroll = (props: {type:string; fullscreen:boolean}) => {
 
 const EmployeesScroll = (props: {type:string;}) => {
     const {type} = props;
+    const [employees, setEmployees] = useState([]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const employeesData = await getEmployees();
+            setEmployees(employeesData);
+        }
+        fetchData();
+    }, []);
+    
     return (
         <div className='bg-white w-full h-full rounded-l-md rounded-r-2xl p-6 '>
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
