@@ -1,8 +1,8 @@
-const apiUrl: string = "http://192.168.150.152:5000";
+const apiUrl: string = "http://localhost:5000";
 
 export async function getEmployees(): Promise<any> {
     try {
-        const response = await fetch(apiUrl + '/employees');
+        const response = await fetch(apiUrl + '/employees', { mode:  'no-cors' });
         if (!response.ok) {
             return []
         }
@@ -16,7 +16,7 @@ export async function getEmployees(): Promise<any> {
 
 export async function getCarts(): Promise<any> {
     try {
-        const response = await fetch(apiUrl + '/carts');
+        const response = await fetch(apiUrl + '/carts', { mode:  'no-cors' });
         if (!response.ok) {
             return []
         }
@@ -30,7 +30,7 @@ export async function getCarts(): Promise<any> {
 
 export async function getLostMops(): Promise<any> {
     try {
-        const response = await fetch(apiUrl + '/lost_mops');
+        const response = await fetch(apiUrl + '/lost_mops', { mode:  'no-cors' });
         if (!response.ok) {
             return []
         }
