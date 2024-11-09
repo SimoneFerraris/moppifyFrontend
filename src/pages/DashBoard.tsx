@@ -2,6 +2,7 @@ import { useState } from 'react'
 import '../App.css'
 import {EmployeesScroll, CartsScroll} from '../components/EmployeesScroll.tsx'
 import InfoContainer from '../components/InfoContainer'
+import mopifyLogo from '../assets/mopifyLogo.svg'
 
 function DashBoard() {
   const [fullscreen, setFullscreen] = useState<boolean>(true)

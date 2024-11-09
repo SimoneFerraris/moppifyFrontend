@@ -7,26 +7,28 @@ import { getCarts, getEmployees } from '../utils/api'
 const Employee = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
     const {empId, name, surname, lostMopsNmb} = props;
     return (
-        <div className='rounded-md h-[10vh] w-[100%] text-gray-800 border border-cyan-900 p-2 grid-cols-2'>
+        <div className='rounded-md h-[10vh] w-[100%] text-gray-800 border border-cyan-900 p-2 grid-cols-2 relative'>
+            <div className='absolute text-sm text-gray-400 right-3'>ID: {props.empId}</div>
             <div className='font-semibold col-span-1'>
                 {props.surname} {props.name}
             </div>
             <div className='col-span-1'>
-                #{props.empId} Total Mops Lost: {props.lostMopsNmb}
+                Mops lost number: {props.lostMopsNmb}
             </div>
         </div>
     )
 }
 
-const Cart = (props: { empId: string; name: string; surname: string; lostMopsNmb: number}) => {
-    const {empId, name, surname, lostMopsNmb} = props;
+const Cart = (props: { uuid: string; building: string; floor: string; room: number}) => {
+    const {uuid, building, floor, room} = props;
     return (
-        <div className='rounded-md h-[10vh] w-[100%] text-gray-800 bg-[#F0F0F0] p-2 grid-cols-2'>
+        <div className='rounded-md w-[100%] text-gray-800 bg-[#F0F0F0] p-2 grid-cols-2 text-sm'>
             <div className='font-semibold col-span-1'>
-                {props.surname} {props.name}
+                Building: {props.building} 
             </div>
-            <div className='col-span-1'>
-                #{props.empId} Total Mops Lost: {props.lostMopsNmb}
+            Floor: {props.floor} Room: {props.room}
+            <div className='col-span-1 text-sm text-gray-400'>
+                UUID{props.uuid}
             </div>
         </div>
     )
@@ -54,18 +56,8 @@ const CartsScroll = (props: {type:string; fullscreen:boolean}) => {
             </div>
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
             <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[80%]'>        
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Cart empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
+                <Cart uuid='ewuwii-udwfewk-279573' room={2} building='Ospedale Bressanone' floor='2a'/>
+                
             </div>
         </div>
     )
@@ -88,18 +80,9 @@ const EmployeesScroll = (props: {type:string;}) => {
             <div className='text-xl font-medium pb-4 tracking-wider'>{props.type}</div>
             <div className='overflow-y-auto overscroll-y-contain space-y-5 h-[90%]'>
                         
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
-                <Employee empId='1' lostMopsNmb={2} name='Donna Mannaia' surname='Lama'/>
+                <Employee empId='2342' lostMopsNmb={2} name='Luca' surname='Lama'/>
+                <Employee empId='7436' lostMopsNmb={2} name='Mario' surname='Sgnizzicolo'/>
+                <Employee empId='9883' lostMopsNmb={2} name='Marianna' surname='Ruccola'/>
             </div>
         </div>
     )
